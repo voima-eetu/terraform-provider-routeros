@@ -28,6 +28,8 @@ func TestGetIpAddress(t *testing.T) {
 	assert.Nil(t, err, "expecting nil error")
 	assert.NotNil(t, res, "expecting non-nil result")
 	assert.Equal(t, res.Address, ipaddr.Address)
+	err = c.DeleteIPAddress(res.ID)
+	assert.Nil(t, err, "Expecting a nil error")
 }
 
 func TestCreateIpAddress(t *testing.T) {
@@ -37,7 +39,9 @@ func TestCreateIpAddress(t *testing.T) {
 	ipaddr.Interface = "bridge"
 	ipaddr.Network = "192.168.88.0"
 	ipaddr.Disabled = "yes"
-	_, err := c.CreateIPAddress(ipaddr)
+	res, err := c.CreateIPAddress(ipaddr)
+	assert.Nil(t, err, "Expecting a nil error")
+	err = c.DeleteIPAddress(res.ID)
 	assert.Nil(t, err, "Expecting a nil error")
 }
 
