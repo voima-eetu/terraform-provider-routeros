@@ -60,6 +60,7 @@ func Provider() *schema.Provider {
 			"routeros_capsman_manager":          resourceCapsManManager(),
 			"routeros_capsman_provisioning":     resourceCapsManProvisioning(),
 			"routeros_capsman_configuration":    resourceCapsManConfiguration(),
+			"routeros_interface_vrrp":           resourceInterfaceVrrp(),
 		},
 		DataSourcesMap: map[string]*schema.Resource{
 			"routeros_ip_addresses": datasourceIPAddresses(),
